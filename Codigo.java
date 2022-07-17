@@ -78,51 +78,51 @@ public class Main {
 		long delta;
 		long currentTime = System.currentTimeMillis();
 		
-		public class Player {
-	private int player_state;						// estado
-	private double player_X;			            // coordenada x
-	private double player_Y;		                // coordenada y
-	private double player_VX;						// velocidade no eixo x
-	private double player_VY;						// velocidade no eixo y
-	private double player_radius;				    // raio (tamanho aproximado do player)
-	private double player_explosion_start;			// instante do início da explosão
-	private double player_explosion_end;			// instante do final da explosão
-	private long player_nextShot;				    // instante a partir do qual pode haver um próximo tiro
+	public class Player {
+		private int player_state;						// estado
+		private double player_X;			            // coordenada x
+		private double player_Y;		                // coordenada y
+		private double player_VX;						// velocidade no eixo x
+		private double player_VY;						// velocidade no eixo y
+		private double player_radius;				    // raio (tamanho aproximado do player)
+		private double player_explosion_start;			// instante do início da explosão
+		private double player_explosion_end;			// instante do final da explosão
+		private long player_nextShot;				    // instante a partir do qual pode haver um próximo tiro
 
 	/*Constructor*/
-	public Player() {
-		player_state = ACTIVE;						
-		player_X = GameLib.WIDTH / 2;			
-		player_Y = GameLib.HEIGHT * 0.90;		
-		player_VX = 0.25;						
-		player_VY = 0.25;						
-		player_radius = 12.0;				    
-		player_explosion_start = 0;			    
-		player_explosion_end = 0;				
-		player_nextShot = currentTime;	
-	}
+		public Player() {
+			player_state = ACTIVE;						
+			player_X = GameLib.WIDTH / 2;			
+			player_Y = GameLib.HEIGHT * 0.90;		
+			player_VX = 0.25;						
+			player_VY = 0.25;						
+			player_radius = 12.0;				    
+			player_explosion_start = 0;			    
+			player_explosion_end = 0;				
+			player_nextShot = currentTime;	
+		}
 	
 	/*Getters*/
-	public int getPlayerState() {return this.player_state;}
-	public double getPlayerX() {return this.player_X;}
-	public double getPlayerY() {return this.player_Y;}
-	public double getPlayerVX() {return this.player_VX;}
-	public double getPlayerVY() {return this.player_VY;}
-	public double getPlayerRadius() {return this.player_radius;}
-	public double getExplosionStart() {return this.player_explosion_start;}				
-	public double getExplosionEnd() {return this.player_explosion_end;}		    
-	public long getPlayerNextShot() {return this.player_nextShot;}
+		public int getPlayerState() {return this.player_state;}
+		public double getPlayerX() {return this.player_X;}
+		public double getPlayerY() {return this.player_Y;}
+		public double getPlayerVX() {return this.player_VX;}
+		public double getPlayerVY() {return this.player_VY;}
+		public double getPlayerRadius() {return this.player_radius;}
+		public double getExplosionStart() {return this.player_explosion_start;}				
+		public double getExplosionEnd() {return this.player_explosion_end;}		    
+		public long getPlayerNextShot() {return this.player_nextShot;}
 			
 	/*Setters*/
-	public void setPlayerState(int player_state) {this.player_state = player_state;}
-	public void setPlayerX(double player_X) {this.player_X = player_X;}
-	public void setPlayerY(double player_Y) {this.player_Y = player_Y;}
-	public void setPlayerVX(double player_VX) {this.player_VX = player_VX;}
-	public void setPlayerVY(double player_VY) {this.player_VY = player_VY;}
-	public void setPlayerRadius(double player_radius) {
-		if(player_radius > 0) {this.player_radius = player_radius;}
-	}
-	public void setPlayerNextShot(long player_nextShot) {this.player_nextShot = player_nextShot;}
+		public void setPlayerState(int player_state) {this.player_state = player_state;}
+		public void setPlayerX(double player_X) {this.player_X = player_X;}
+		public void setPlayerY(double player_Y) {this.player_Y = player_Y;}
+		public void setPlayerVX(double player_VX) {this.player_VX = player_VX;}
+		public void setPlayerVY(double player_VY) {this.player_VY = player_VY;}
+		public void setPlayerRadius(double player_radius) {
+			if(player_radius > 0) {this.player_radius = player_radius;}
+		}
+		public void setPlayerNextShot(long player_nextShot) {this.player_nextShot = player_nextShot;}
 	
 	/* variáveis dos projéteis disparados pelo player */
 	int [] projectile_states = new int[10];					// estados
