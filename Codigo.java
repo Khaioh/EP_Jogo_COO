@@ -10,6 +10,102 @@ import java.awt.Color;
 /*                                                                     */
 /***********************************************************************/
 
+interface IPonto2D {
+	
+	/*Getters*/
+	
+	public double getPosicaoX();
+	public double getPosicaoY();
+	public double getVelocidadeVX();
+	public double getVelocidadeVY();
+	public double getRadius();
+	public int getState();
+	
+	/*Setters*/
+	
+	public void setPosicaoX(double posicao_X);
+	public void setPosicaoY(double posicao_Y);
+	public void setVelocidadeVX(double velocidade_VX);
+	public void setVelocidadeVY(double velocidade_VY);
+	public void setRadius(double radius);
+	public void setState(int state);
+	
+}
+
+class ElementoBase implements IPonto2D {
+	
+	private double posicao_X;       // coordenada x
+	private double posicao_Y;       // coordenada y
+	private double velocidade_VX;   // velocidade no eixo x
+	private double velocidade_VY;   // velocidade no eixo y
+	private double radius;          // raio(tamanho)
+	private int state;              // estado
+	
+	/*Constructor*/
+	
+	public ElementoBase(double posicao_X, double posicao_Y, double velocidade_VX, double velocidade_VY, double radius, int state) {
+	
+		setPosicaoX(posicao_X);
+		setPosicaoY(posicao_Y);
+		setVelocidadeVX(velocidade_VX);
+		setVelocidadeVX(velocidade_VY);
+		this.radius = radius;
+		this.state = state;
+		
+	}
+	
+	
+	public double getPosicaoX() {
+		return posicao_X;
+	}
+
+	public double getPosicaoY() {
+		return posicao_Y;
+	}
+
+	public double getVelocidadeVX() {
+		return velocidade_VX;
+	}
+
+	public double getVelocidadeVY() {
+		return velocidade_VY;
+	}
+
+	public double getRadius() {
+		return radius;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setPosicaoX(double posicao_X) {
+		this.posicao_X = posicao_X;
+	}
+
+	public void setPosicaoY(double posicao_Y) {
+		this.posicao_Y = posicao_Y;
+	}
+
+	public void setVelocidadeVX(double velocidade_VX) {
+		this.velocidade_VX = velocidade_VX;
+	}
+
+	public void setVelocidadeVY(double velocidade_VY) {
+		this.velocidade_VY = velocidade_VY;
+	}
+
+	public void setRadius(double radius) {
+		this.radius = radius;
+		
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+	
+}
+
 public class Main {
 	
 	/* Constantes relacionadas aos estados que os elementos   */
