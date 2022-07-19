@@ -54,6 +54,7 @@ class ElementoBase implements IPonto2D {
 		
 	}
 	
+	/*metodos getters e setters*/
 	
 	public double getPosicaoX() {
 		return posicao_X;
