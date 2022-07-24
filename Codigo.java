@@ -485,8 +485,48 @@ class Enemy1 extends Enemy{
 	}
 }
 
-
-
+/* planos de fundo */
+class BackGround {
+	private double background_X;
+	private double background_Y;
+	private double speed;
+	private double count;
+	
+	
+	public BackGround(double background_X, double background_Y, double speed) {
+		setBackground_X(background_X);
+		setBackground_Y(background_Y);
+		this.speed = speed;
+		this.count = 0.0;
+	}
+	
+	public double getBackground_X() {
+		return background_X;
+	}
+	public void setBackground_X(double background_X) {
+		this.background_X = background_X;
+	}
+	public double getBackground_Y() {
+		return background_Y;
+	}
+	public void setBackground_Y(double background_Y) {
+		this.background_Y = background_Y;
+	}
+	
+	public double getSpeed() {
+		return speed;
+	}
+	public void setSpeed(double speed) {
+		this.speed = speed;
+	}
+	public double getCount() {
+		return count;
+	}
+	public void setCount(double count) {
+		this.count = count;
+	}
+	
+}
 
 
 
@@ -643,12 +683,16 @@ class MainCOO{
 		
 		/* estrelas que formam o fundo de primeiro plano */
 		
+		BackGround [] vet_background1 = new BackGround[20];
+		
 		/*double [] background1_X = new double[20];
 		double [] background1_Y = new double[20];
 		double background1_speed = 0.070;
 		double background1_count = 0.0;
 		
 		/* estrelas que formam o fundo de segundo plano */
+		
+		BackGround [] vet_background2 = new BackGround[50];
 		
 		/*double [] background2_X = new double[50];
 		double [] background2_Y = new double[50];
@@ -846,3 +890,113 @@ class MainCOO{
 			}
 	}
 }
+				
+			/*******************/
+			/* Desenho da cena */
+			/*******************/
+				
+	/* desenhando plano de fundo distante */
+		
+	GameLib.setColor(Color.DARK_GRAY);
+	background2.setCount (background2.getCount() + background2.getSpeed() * delta;
+	
+	for (BackGround background2 : vet_background2){
+	
+		GameLib.fillRect(background2.getBackground_X(), (background2.getBackground_Y() + background2.getCount()) % GameLib.HEIGHT, 2, 2);
+	
+	}
+	
+	
+	
+	/* desenhando plano de fundo próximo */
+	
+	GameLib.setColor(Color.GRAY);
+	background1.setCount (background1.getCount() + background1.getSpeed() * delta;
+	
+	for (BackGround background1 : vet_background1) {
+		
+		GameLib.fillRect(background1.getBackground_X(), (background1.getBackground_Y() + background1.getCount()) % GameLib.HEIGHT, 3, 3);
+		
+	}
+		
+	
+				
+	/* desenhando player */
+	
+	if(p1.getState() == EXPLODING) {	
+		
+		double alpha = (currentTime - p1.getExplosionStart()) / (p1.getExplosionEnd() - p1.getExplosionStart());
+		GameLib.drawExplosion(p1.getPosicaoX(), p1.getPosicaoY(), alpha);
+	}
+	else{
+		
+		GameLib.setColor(Color.BLUE);
+		GameLib.drawPlayer(p1.getPosicaoX(), p1.getPosicaoY(), p1.getRadius());
+	}
+	
+		
+	/* desenhando projeteis (player) */
+	
+	for (Projectile1 pj1 : proj_player){
+	
+	
+		if(pj1.getState() == ACTIVE){
+			
+			GameLib.setColor(Color.GREEN);
+			GameLib.drawLine(pj1.getPosicaoX(), pj1.getPosicaoY() - 5, pj1.getPosicaoX(), pj1.getPosicaoY() + 5);
+			GameLib.drawLine(pj1.getPosicaoX() - 1, pj1.getPosicaoY() - 3, pj1.getPosicaoX() - 1, pj1.getPosicaoY() + 3);
+			GameLib.drawLine(pj1.getPosicaoX() + 1, pj1.getPosicaoY() - 3, pj1.getPosicaoX() + 1, pj1.getPosicaoY() + 3);
+		}
+	
+	
+	/* desenhando projeteis (inimigos) */
+	
+	for (Projectile1 pj2 : proj_enemy1){
+	
+		if(pj2.getState() == ACTIVE) {
+
+			GameLib.setColor(Color.RED);
+			GameLib.drawCircle(pj2.getPosicaoX(), pj2.getPosicaoY(), pj2.getRadius());
+		}
+	
+	}
+	
+	
+		
+	/* desenhando inimigos (tipo 1) */
+	
+	for (Enemy1 eny1 : vet_enemy1) {
+	
+		if(eny1.getState() == EXPLODING){
+				
+			double alpha = (currentTime - eny1.getExplosionStart()) / (eny1.getExplosionEnd() - eny1.getExplosionStart());
+			GameLib.drawExplosion(eny1.getPosicaoX(), eny1.getPosicaoY(), alpha);
+		}
+			
+		if(eny1.getState() == ACTIVE){
+		
+			GameLib.setColor(Color.CYAN);
+			GameLib.drawCircle(eny1.getPosicaoX(), eny1.getPosicaoY(), eny1.getRadius());
+		}
+	
+	}
+	
+	
+	/* desenhando inimigos (tipo 2) */
+	
+	for (Enemy2 eny2 : vet_enemy2) {
+	
+		if(eny2.getState() == EXPLODING){
+			
+			double alpha = (currentTime - eny2.getExplosionStart()) / (eny2.getExplosionEnd() - eny2.getExplosionStart());
+			GameLib.drawExplosion(eny2.getPosicaoX(), eny2.getPosicaoY(), alpha);
+		}
+		
+		if(eny2.getState() == ACTIVE){
+	
+			GameLib.setColor(Color.MAGENTA);
+			GameLib.drawDiamond(eny2.getPosicaoX(), eny2.getPosicaoY(), eny2.getRadius());
+		}
+	
+	}
+	
